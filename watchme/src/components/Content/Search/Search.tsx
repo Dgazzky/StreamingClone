@@ -5,7 +5,7 @@ import styles from './Search.module.scss'
 import { COLORS } from '../../../constants/colors'
 import PropTypes from 'prop-types'
 
-const Search = props => {
+const Search = (props: any) => {
     const { placeholder, value, onChange } = props
     return (
         <div className={styles.search}>

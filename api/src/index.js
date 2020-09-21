@@ -1,4 +1,5 @@
 const express = require('express')
+const fetch = require('node-fetch')
 const app = express()
 const PORT = 3030
 const movies = require('./movies.json')
@@ -13,8 +14,12 @@ app.use(function (req, res, next) {
     next()
 })
 
-app.get('/movies', (req, res) => {
-    res.send(movies)
+app.get('/movies', async (req, res) => {
+    const response = await fetch(
+        'https://itunes.apple.com/us/rss/topmovies/limit=100/json'
+    )
+
+    res.json(await response.json())
 })
 
 app.get('/movies/:movieId', (req, res) => {

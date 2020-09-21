@@ -2,17 +2,12 @@ import React, { useState, useEffect } from 'react'
 import { useSelector } from 'react-redux'
 import { MoviesSelectors } from '../../../redux/movies'
 import styles from './Grid.module.scss'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCircle, faTimes } from '@fortawesome/free-solid-svg-icons'
-import { COLORS } from '../../../constants/colors'
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+// import { faCircle, faTimes } from '@fortawesome/free-solid-svg-icons'
+// import { COLORS } from '../../../constants/colors'
 import Panel from './Panel'
 
-const icons = {
-    ONLINE: <FontAwesomeIcon icon={faCircle} color={COLORS['light-violet']} />,
-    OFFLINE: <FontAwesomeIcon icon={faTimes} color={COLORS['red']} />,
-}
-
-const Grid = props => {
+const Grid = () => {
     const [reducedMovies, setReducedMovies] = useState([])
     const movies = useSelector(MoviesSelectors.getMovies)
 
@@ -64,8 +59,8 @@ const Grid = props => {
     //     },
     // ]
 
-    const mapMovies = data =>
-        data.map(el => ({
+    const mapMovies = (data: any) =>
+        data.map((el: any) => ({
             key: el.id.attributes['im:id'],
             name: el.title.label,
             ...el,
@@ -73,7 +68,7 @@ const Grid = props => {
 
     return (
         <div className={styles.tableContainer}>
-            {movies.map(el => (
+            {reducedMovies.map(el => (
                 <Panel movie={el}></Panel>
             ))}
         </div>
