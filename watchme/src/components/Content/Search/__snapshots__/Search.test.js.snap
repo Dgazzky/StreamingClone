@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Search changes search value 1`] = `
+<div
+  className="search"
+>
+  <Input
+    onChange={[MockFunction]}
+    prefix={
+      <ForwardRef(SearchOutlined)
+        style={
+          Object {
+            "color": "#A9AEC1",
+          }
+        }
+      />
+    }
+    type="text"
+  />
+</div>
+`;
+
+exports[`Search renders correctly 1`] = `
+<div
+  className="search"
+>
+  <Input
+    onChange={[MockFunction]}
+    prefix={
+      <ForwardRef(SearchOutlined)
+        style={
+          Object {
+            "color": "#A9AEC1",
+          }
+        }
+      />
+    }
+    type="text"
+  />
+</div>
+`;
