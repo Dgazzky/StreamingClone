@@ -3,6 +3,7 @@ import { Card, Button } from 'antd'
 import styles from './Panel.module.scss'
 import Modal from './Modal'
 import { Movie } from '../../../../@types/movie'
+import { STRINGS } from '../../../../constants/strings'
 interface PanelProps {
     movie: Movie
     key: string
@@ -33,13 +34,13 @@ const Panel = ({ movie, key }: PanelProps) => {
                             <div className={styles.field}>
                                 <div className={styles.infoItem}>
                                     <span className={styles.infoLabel}>
-                                        Release date:
+                                        {STRINGS['release.date']}
                                     </span>
                                     {movie['im:releaseDate'].attributes.label}
                                 </div>
                                 <div className={styles.infoItem}>
                                     <span className={styles.infoLabel}>
-                                        User rating:{' '}
+                                        {STRINGS['user.ratings']}{' '}
                                         <span className={styles.infoValue}>
                                             {movie.rating}
                                             {''}
@@ -49,7 +50,7 @@ const Panel = ({ movie, key }: PanelProps) => {
                                 </div>
                                 <div className={styles.infoItem}>
                                     <span className={styles.infoLabel}>
-                                        Match:{' '}
+                                        {STRINGS['match']}{' '}
                                         <span className={styles.infoValue}>
                                             {movie.match}
                                             {''}%
@@ -61,7 +62,7 @@ const Panel = ({ movie, key }: PanelProps) => {
                                 className={styles.button}
                                 onClick={() => setIsVisible(!isVisible)}
                             >
-                                Read more
+                                {STRINGS['read.more']}
                             </Button>
                         </div>
                     </div>

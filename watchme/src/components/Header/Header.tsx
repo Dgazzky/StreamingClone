@@ -1,4 +1,5 @@
 import React from 'react'
+import { Switch } from 'antd'
 import styles from './Header.module.scss'
 import { STRINGS } from '../../constants/strings'
 import Search from './Search'
@@ -10,10 +11,10 @@ interface HeaderProps {
     onFavoritesView: () => void
 }
 const Header = ({ onSearch, onFavoritesView }: HeaderProps) => {
-    // const handleChange = () => {
-    //     document.body.classList.toggle('dark-theme')
-    //     document.body.classList.toggle('light-theme')
-    // }
+    const handleChange = () => {
+        document.body.classList.toggle('dark-theme')
+        document.body.classList.toggle('light-theme')
+    }
 
     const isFavoritesMode = useSelector(MoviesSelectors.getMode)
     return (
@@ -22,9 +23,17 @@ const Header = ({ onSearch, onFavoritesView }: HeaderProps) => {
             <div className={styles.title}> {STRINGS['label']}</div>
             <div className={styles.divider}> </div>
             <div className={styles.favorites} onClick={onFavoritesView}>
-                {isFavoritesMode ? 'View all' : 'View Favorites'}
+                {isFavoritesMode
+                    ? STRINGS['view.all']
+                    : STRINGS['view.favorites']}
             </div>
-
+            <div className={styles.theme}>
+                <Switch
+                    onChange={handleChange}
+                    unCheckedChildren={'Dark theme'}
+                    checkedChildren={'Light theme'}
+                />
+            </div>
             <div className={styles.search}>
                 <Search onSearch={onSearch} />
             </div>

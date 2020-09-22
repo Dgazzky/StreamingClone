@@ -7,6 +7,7 @@ import { Button, BackTop } from 'antd'
 
 import { useSelector } from 'react-redux'
 import { MoviesSelectors } from '../../redux/movies'
+import { STRINGS } from '../../constants/strings'
 interface ContentProps {
     search: string
     goBack: () => void
@@ -24,10 +25,11 @@ const Content = ({ search, goBack }: ContentProps) => {
                     <>
                         <Button onClick={goBack} className={styles.goBack}>
                             <ArrowLeftOutlined />
-                            Back to main
+                            {STRINGS['back.to.main']}
                         </Button>
                         <div className={styles.resultHeader}>
-                            Results found: {foundMovies.length}{' '}
+                            {STRINGS['results.found']}
+                            {foundMovies.length}{' '}
                         </div>
 
                         <SearchGrid foundMovies={foundMovies} />

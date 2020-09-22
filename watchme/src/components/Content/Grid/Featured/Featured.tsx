@@ -2,6 +2,8 @@ import React, { useState } from 'react'
 import { Movie } from '../../../../@types/movie'
 import styles from './Featured.module.scss'
 import { Button } from 'antd'
+import { STRINGS } from '../../../../constants/strings'
+import cx from 'classnames'
 interface FeaturedProps {
     movie: Movie
 }
@@ -23,19 +25,19 @@ const Featured = ({ movie }: FeaturedProps) => {
                 </video>
                 {muted && (
                     <span className={styles.videoText}>
-                        Hover over video to play sound
+                        {STRINGS['hover.video']}
                     </span>
                 )}
             </div>
-            <div className={styles.featuredInfo}>
-                <span className={styles.featuredTitle}>
+            <div className={cx(styles.featuredInfo, 'theme')}>
+                <span className={cx(styles.featuredTitle, 'title')}>
                     {movie['im:name'].label}
                     <Button
                         className={styles.button}
                         href={movie.link[0].attributes.href}
                         size="small"
                     >
-                        View page on Itunes
+                        {STRINGS['view.page.on.itunes']}
                     </Button>
                 </span>
                 <span className={styles.featuredSummary}>
@@ -43,16 +45,16 @@ const Featured = ({ movie }: FeaturedProps) => {
                 </span>
                 <div className={styles.infoItem}>
                     <span className={styles.infoLabel}>
-                        Release date:{' '}
-                        <span className={styles.infoValue}>
+                        {STRINGS['release.date']}{' '}
+                        <span className={cx(styles.infoValue, 'value')}>
                             {movie['im:releaseDate'].attributes.label}
                         </span>
                     </span>
                 </div>
                 <div className={styles.infoItem}>
                     <span className={styles.infoLabel}>
-                        User rating:{' '}
-                        <span className={styles.infoValue}>
+                        {STRINGS['user.ratings']}{' '}
+                        <span className={cx(styles.infoValue, 'value')}>
                             {movie.rating}
                             /7
                         </span>
@@ -60,9 +62,11 @@ const Featured = ({ movie }: FeaturedProps) => {
                 </div>
                 <div className={styles.infoItem}>
                     <span className={styles.infoLabel}>
-                        We give{' '}
-                        <span className={styles.infoValue}>{movie.match}%</span>{' '}
-                        that you will like this movie
+                        {STRINGS['we.give']}
+                        <span className={cx(styles.infoValue, 'value')}>
+                            {movie.match}%
+                        </span>{' '}
+                        {STRINGS['will.like']}
                     </span>
                 </div>
             </div>

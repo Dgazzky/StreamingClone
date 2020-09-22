@@ -5,6 +5,7 @@ import { Movie } from '../../../../../@types/movie'
 import { useDispatch, useSelector } from 'react-redux'
 import MoviesActions, { MoviesSelectors } from '../../../../../redux/movies'
 import includes from 'lodash/includes'
+import { STRINGS } from '../../../../../constants/strings'
 interface ModalProps {
     isVisible: boolean
     movie: Movie
@@ -42,7 +43,9 @@ const Modal = ({ isVisible, movie, setIsVisible }: ModalProps) => {
                         className={styles.addToFavorites}
                         onClick={handleAddFavorite}
                     >
-                        {includes(favorites, movie) ? 'Unlike' : 'Like'}
+                        {includes(favorites, movie)
+                            ? STRINGS['unlike']
+                            : STRINGS['like']}
                     </Button>
                 </div>
                 <div className={styles.info}>
@@ -54,20 +57,21 @@ const Modal = ({ isVisible, movie, setIsVisible }: ModalProps) => {
                     </span>
                     <div className={styles.infoItem}>
                         <span className={styles.infoLabel}>
-                            User rating:{' '}
+                            {STRINGS['user.ratings']}{' '}
                             <span className={styles.infoValue}>
                                 {movie.rating}
+                                {''}
                                 /7
                             </span>
                         </span>
                     </div>
                     <div className={styles.infoItem}>
                         <span className={styles.infoLabel}>
-                            We give{' '}
+                            {STRINGS['we.give']}
                             <span className={styles.infoValue}>
                                 {movie.match}%
                             </span>{' '}
-                            that you will like this movie
+                            {STRINGS['will.like']}
                         </span>
                     </div>
 
