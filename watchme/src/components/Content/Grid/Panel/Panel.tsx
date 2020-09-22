@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Card } from 'antd'
+import { Card, Button } from 'antd'
 import styles from './Panel.module.scss'
 import Modal from './Modal'
 import { Movie } from '../../../../@types/movie'
@@ -8,33 +8,63 @@ interface PanelProps {
 }
 const Panel = ({ movie }: PanelProps) => {
     const [isVisible, setIsVisible] = useState(false)
-    const [infoVisible, setInfoVisible] = useState(false)
 
     return (
-        <div
-            className={styles.panel}
-            onClick={() => setIsVisible(!isVisible)}
-            onMouseOver={() => setInfoVisible(true)}
-            onMouseLeave={() => setInfoVisible(false)}
-        >
-            <Modal
-                isVisible={isVisible}
-                movie={movie}
-                setIsVisible={setIsVisible}
-            />
+        <div className={styles.panel}>
+            {isVisible && (
+                <Modal
+                    isVisible={true}
+                    movie={movie}
+                    setIsVisible={setIsVisible}
+                />
+            )}
             <Card hoverable>
                 <div className={styles.panelContent}>
                     <img loading={'lazy'} src={movie['im:image'][2]['label']} />
-                    {infoVisible && (
-                        <div className={styles.info}>
-                            <span className={styles.title}>
-                                {movie['im:name'].label}
-                            </span>
-                            <span className={styles.summary}>
-                                {movie.summary.label}
-                            </span>
+                    <div className={styles.info}>
+                        <div
+                            className={styles.title}
+                            title={movie['im:name'].label}
+                        >
+                            {movie['im:name'].label}
                         </div>
-                    )}
+                        <div className={styles.summary}>
+                            <div className={styles.field}>
+                                <div className={styles.infoItem}>
+                                    <span className={styles.infoLabel}>
+                                        Release date:
+                                    </span>
+                                    {movie['im:releaseDate'].attributes.label}
+                                </div>
+                                <div className={styles.infoItem}>
+                                    <span className={styles.infoLabel}>
+                                        User rating:{' '}
+                                        <span className={styles.infoValue}>
+                                            {movie.rating}
+                                            {''}
+                                            /7
+                                        </span>
+                                    </span>
+                                </div>
+                                <div className={styles.infoItem}>
+                                    <span className={styles.infoLabel}>
+                                        Match:{' '}
+                                        <span className={styles.infoValue}>
+                                            {movie.match}
+                                            {''}%
+                                        </span>
+                                    </span>
+                                </div>
+                            </div>
+                            <Button
+                                className={styles.button}
+                                onClick={() => setIsVisible(!isVisible)}
+                            >
+                                Read more
+                            </Button>
+                        </div>
+                    </div>
+                    {/* )} */}
                 </div>
             </Card>
         </div>

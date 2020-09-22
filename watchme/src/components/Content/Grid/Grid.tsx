@@ -1,17 +1,26 @@
 import React from 'react'
 import styles from './Grid.module.scss'
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-// import { faCircle, faTimes } from '@fortawesome/free-solid-svg-icons'
-// import { COLORS } from '../../../constants/colors'
-// import Panel from './Panel'
 import { MOVIE_CATEGORIES } from '../../../constants/variables'
 import Row from './Row'
+import { useSelector } from 'react-redux'
+import { MoviesSelectors } from '../../../redux/movies'
+import { Movie } from '../../../@types/movie'
 
 const Grid = () => {
+    const movies = useSelector(state => MoviesSelectors.getMovies(state))
+
     return (
         <div className={styles.tableContainer}>
-            {Object.keys(MOVIE_CATEGORIES).map(category => (
-                <Row category={MOVIE_CATEGORIES[category]} />
+            {Object.keys(MOVIE_CATEGORIES).map((category, index) => (
+                <Row
+                    key={index}
+                    movies={movies.filter(
+                        (movie: Movie) =>
+                            movie.category.attributes.label ===
+                            MOVIE_CATEGORIES[category]
+                    )}
+                    category={MOVIE_CATEGORIES[category]}
+                />
             ))}
         </div>
     )

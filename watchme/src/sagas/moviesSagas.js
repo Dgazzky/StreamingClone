@@ -12,7 +12,15 @@ export function* getMovies(api) {
 
     yield put(MoviesAction.setFetching(false))
     if (moviesOK) {
-        yield put(MoviesAction.setMovies(data))
+        yield put(
+            MoviesAction.setMovies(
+                data.feed.entry.map(el => ({
+                    ...el,
+                    rating: Math.floor(Math.random() * Math.floor(7)),
+                    match: Math.floor(Math.random() * Math.floor(100)),
+                }))
+            )
+        )
     } else if (moviesProblem) {
         console.log('Error getting movies ', moviesProblem)
     }

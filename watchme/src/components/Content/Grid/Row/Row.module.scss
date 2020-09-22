@@ -1,8 +1,10 @@
 @import '../../../../constants/colors';
 .moviesContainer {
+    padding: 4px;
     display: flex;
     flex-direction: row;
     overflow-x: auto;
+    overflow-y: hidden;
     align-items: center;
 
     &::-webkit-scrollbar {
@@ -10,11 +12,11 @@
         height: 8px;
     }
     &::-webkit-scrollbar-track {
-        background: $color-blue-2;
+        background: $color-blue-1;
         border-radius: 50px;
     }
     &::-webkit-scrollbar-thumb {
-        background: $color-blue-3;
+        background: $color-blue-2;
         border-radius: 50px;
     }
 }

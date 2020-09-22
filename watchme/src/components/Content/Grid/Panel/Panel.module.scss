@@ -4,28 +4,76 @@
     font-family: 'Open Sans', sans-serif;
     font-style: normal;
     font-size: 14px;
-    margin-left: 4px;
+    margin-left: 12px;
 
     img {
-        min-height: 200px;
         min-width: 145px;
+        z-index: 101;
+    }
+    .field {
+        flex: 1;
+        .infoItem {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            .infoValue {
+                color: $color-blue-9;
+            }
+            .infoLabel {
+                margin-top: 4px;
+                font-weight: bold;
+                line-height: 14px;
+            }
+        }
+    }
+    .summary {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+    }
+    .info {
+        // background-color: $color-blue-1;
+        width: 0;
+
+        display: flex;
+        flex-direction: column;
+
+        visibility: hidden;
+        opacity: 0;
+        transition: width 500ms, visibility 1000ms, opacity 0ms;
+    }
+
+    &:hover {
+        .info {
+            padding: 8px;
+            visibility: visible;
+            opacity: 1;
+            width: 150px;
+            transition: width 500ms, visibility 1000ms, opacity 2000ms;
+        }
     }
 
     [class='ant-card-body'] {
         padding: 0;
+        cursor: auto;
     }
 }
 .panelContent {
+    height: 200px;
     display: flex;
     flex-direction: row;
 }
-.info {
-    width: 200px;
-    height: 200px;
-    display: flex;
-    flex-direction: column;
+
+.button {
+    // align-self: center;
 }
-.summary {
+.title {
+    font-weight: bold;
+    line-height: 16px;
+    font-size: 18px;
+    color: $color-blue-9;
+    max-height: 50px;
+    overflow: hidden;
 }
 
 .imageContainer {

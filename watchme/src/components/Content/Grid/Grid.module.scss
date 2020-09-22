@@ -4,3 +4,13 @@
     display: flex;
     flex-direction: column;
 }
+.searchGrid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 300px));
+    display: grid;
+    row-gap: 24px;
+}
+.panelContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

@@ -8,15 +8,27 @@ export interface Movie {
         }
     }
     'im:image': Array<Image>
-    'im:releaseDate': {}
-    'im:price': {}
-    link: {}
+    'im:releaseDate': {
+        attributes: {
+            label: string
+        }
+    }
+    'im:price': {
+        label: string
+    }
+    link: Array<{
+        attributes: {
+            href: string
+        }
+    }>
     summary: {
         label: string
     }
     'im:name': {
         label: string
     }
+    rating: number
+    match: number
 }
 
 interface Image {
