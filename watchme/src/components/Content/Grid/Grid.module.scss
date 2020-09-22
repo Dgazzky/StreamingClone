@@ -1,46 +1,6 @@
 @import '../../../constants/colors';
 
 .tableContainer {
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    grid-row-gap: 1em;
-    grid-column-gap: 1em;
-}
-
-.cell {
-    padding: 10px 20px 10px 20px;
-    position: relative;
-    font-size: 12px;
-    font-weight: 600;
-    min-height: 41px;
     display: flex;
-    align-items: center;
-}
-
-.row {
-    td {
-        border-top: 2px solid $color-gray-200;
-        border-bottom: 2px solid $color-gray-200;
-    }
-}
-.headerCell {
-    text-align: left;
-    padding: 10px 0 10px 20px;
-    color: $color-voilet-100;
-}
-.status {
-    margin-left: 8px;
-}
-.empty {
-    height: 60px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.rebooting {
-    margin-left: 0px;
-    color: $color-voilet-100;
-    &::after {
-        content: '...';
-    }
+    flex-direction: column;
 }

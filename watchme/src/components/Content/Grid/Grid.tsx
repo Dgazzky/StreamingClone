@@ -1,75 +1,17 @@
-import React, { useState, useEffect } from 'react'
-import { useSelector } from 'react-redux'
-import { MoviesSelectors } from '../../../redux/movies'
+import React from 'react'
 import styles from './Grid.module.scss'
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 // import { faCircle, faTimes } from '@fortawesome/free-solid-svg-icons'
 // import { COLORS } from '../../../constants/colors'
-import Panel from './Panel'
+// import Panel from './Panel'
+import { MOVIE_CATEGORIES } from '../../../constants/variables'
+import Row from './Row'
 
 const Grid = () => {
-    const [reducedMovies, setReducedMovies] = useState([])
-    const movies = useSelector(MoviesSelectors.getMovies)
-
-    useEffect(() => {
-        setReducedMovies(mapMovies(movies))
-    }, [movies])
-
-    // const columns = [
-    //     {
-    //         dataIndex: 'name',
-    //         key: 'name',
-    //         width: '40%',
-    //         render: text => <div className={styles.cell}> {text}</div>,
-    //         title: () => (
-    //             <div className={styles.headerCell}> {STRINGS['name']}</div>
-    //         ),
-    //     },
-    //     {
-    //         dataIndex: 'status',
-    //         key: 'status',
-    //         width: '60%',
-    //         title: () => (
-    //             <div className={styles.headerCell}> {STRINGS['status']}</div>
-    //         ),
-    //         render: (text, record, index) => (
-    //             <div className={styles.cell}>
-    //                 {icons[text]}
-    //                 <span
-    //                     className={classnames(
-    //                         styles.status
-    //                         // styles[text.toLowerCase()]
-    //                     )}
-    //                 >
-    //                     {text}
-    //                 </span>
-    //             </div>
-    //         ),
-    //     },
-    //     {
-    //         title: '',
-    //         dataIndex: 'action',
-    //         key: 'action',
-    //         width: '20px',
-    //         render: (text, record) => (
-    //             <div className={styles.cell}>
-    //                 <ActionPanel onAction={props.onAction} record={record} />
-    //             </div>
-    //         ),
-    //     },
-    // ]
-
-    const mapMovies = (data: any) =>
-        data.map((el: any) => ({
-            key: el.id.attributes['im:id'],
-            name: el.title.label,
-            ...el,
-        }))
-
     return (
         <div className={styles.tableContainer}>
-            {reducedMovies.map(el => (
-                <Panel movie={el}></Panel>
+            {Object.keys(MOVIE_CATEGORIES).map(category => (
+                <Row category={MOVIE_CATEGORIES[category]} />
             ))}
         </div>
     )

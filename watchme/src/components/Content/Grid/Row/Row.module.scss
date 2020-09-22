@@ -1,0 +1,30 @@
+@import '../../../../constants/colors';
+.moviesContainer {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    align-items: center;
+
+    &::-webkit-scrollbar {
+        width: 8px;
+        height: 8px;
+    }
+    &::-webkit-scrollbar-track {
+        background: $color-blue-2;
+        border-radius: 50px;
+    }
+    &::-webkit-scrollbar-thumb {
+        background: $color-blue-3;
+        border-radius: 50px;
+    }
+}
+.row {
+    margin-top: 24px;
+    display: flex;
+    flex-direction: column;
+}
+.rowTitle {
+    font-size: 24px;
+    font-weight: 600;
+    letter-spacing: 0.5%;
+}

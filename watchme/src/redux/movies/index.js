@@ -28,6 +28,12 @@ export const MoviesSelectors = {
         Immutable.getIn(state, ['movies', 'isFetching'], false),
     getMovies: state =>
         Immutable.getIn(state, ['movies', 'movies', 'feed', 'entry'], []),
+    getMoviesByCategory: (state, search) =>
+        Immutable.getIn(
+            state,
+            ['movies', 'movies', 'feed', 'entry'],
+            []
+        ).filter(movie => movie.category.attributes.label === search),
 }
 
 export const reducer = createReducer(INITIAL_STATE, {
