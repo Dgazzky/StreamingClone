@@ -10,9 +10,9 @@ interface SearchGridProps {
 const SearchGrid = ({ foundMovies }: SearchGridProps) => {
     return (
         <div className={styles.searchGrid}>
-            {foundMovies.map((el: Movie) => (
+            {foundMovies.map((movie: Movie) => (
                 <div className={styles.panelContainer}>
-                    <Panel movie={el} />
+                    <Panel key={movie.id.label} movie={movie} />
                 </div>
             ))}
         </div>

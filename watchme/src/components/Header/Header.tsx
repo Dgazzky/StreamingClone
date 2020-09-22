@@ -10,6 +10,11 @@ interface HeaderProps {
     onFavoritesView: () => void
 }
 const Header = ({ onSearch, onFavoritesView }: HeaderProps) => {
+    // const handleChange = () => {
+    //     document.body.classList.toggle('dark-theme')
+    //     document.body.classList.toggle('light-theme')
+    // }
+
     const isFavoritesMode = useSelector(MoviesSelectors.getMode)
     return (
         <div className={styles.header}>
@@ -19,6 +24,7 @@ const Header = ({ onSearch, onFavoritesView }: HeaderProps) => {
             <div className={styles.favorites} onClick={onFavoritesView}>
                 {isFavoritesMode ? 'View all' : 'View Favorites'}
             </div>
+
             <div className={styles.search}>
                 <Search onSearch={onSearch} />
             </div>

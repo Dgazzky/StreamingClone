@@ -5,8 +5,9 @@ import Modal from './Modal'
 import { Movie } from '../../../../@types/movie'
 interface PanelProps {
     movie: Movie
+    key: string
 }
-const Panel = ({ movie }: PanelProps) => {
+const Panel = ({ movie, key }: PanelProps) => {
     const [isVisible, setIsVisible] = useState(false)
 
     return (
@@ -18,7 +19,7 @@ const Panel = ({ movie }: PanelProps) => {
                     setIsVisible={setIsVisible}
                 />
             )}
-            <Card hoverable>
+            <Card hoverable key={key}>
                 <div className={styles.panelContent}>
                     <img loading={'lazy'} src={movie['im:image'][2]['label']} />
                     <div className={styles.info}>

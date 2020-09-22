@@ -14,7 +14,7 @@ const Row = ({ category, movies }: RowProps) => {
             <span className={styles.rowTitle}>{category}</span>
             <div className={styles.moviesContainer}>
                 {movies.map((movie: Movie) => (
-                    <Panel movie={movie} />
+                    <Panel key={movie.id.label} movie={movie} />
                 ))}
             </div>
         </div>
