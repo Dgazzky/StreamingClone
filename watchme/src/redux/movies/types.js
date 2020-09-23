@@ -6,6 +6,7 @@ export const MoviesStateRecord = Immutable.Record(
         isFetching: false,
         search: '',
         favorites: [],
+        featured: {},
         viewFavorites: false,
     },
     'MoviesStateRecord'

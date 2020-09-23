@@ -5,13 +5,11 @@ import rootReducer from './rootReducer'
 import rootSaga from '../sagas'
 
 const middleware = []
-const enhancers = []
 const sagaMiddleware = createSagaMiddleware()
 
 middleware.push(sagaMiddleware)
-enhancers.push(applyMiddleware(...middleware))
 
-const store = createStore(rootReducer, compose(...enhancers))
+const store = createStore(rootReducer, applyMiddleware(...middleware))
 
 sagaMiddleware.run(rootSaga)
 

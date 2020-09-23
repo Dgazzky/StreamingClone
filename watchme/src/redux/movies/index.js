@@ -17,6 +17,7 @@ const { Types, Creators } = createActions(
         addMovieToFavorites: ['movie'],
         removeMovieFromFavorites: ['movie'],
         switchMode: null,
+        setFeaturedMovie: ['featured'],
     },
     { prefix }
 )
@@ -35,6 +36,7 @@ export const MoviesSelectors = {
             : Immutable.getIn(state, ['movies', 'movies'], []),
 
     getSearch: state => Immutable.getIn(state, ['movies', 'search'], ''),
+    getFeatured: state => Immutable.getIn(state, ['movies', 'featured'], {}),
     getFavorites: state => Immutable.getIn(state, ['movies', 'favorites'], []),
     getMode: state =>
         Immutable.getIn(state, ['movies', 'viewFavorites'], false),
@@ -52,6 +54,10 @@ export const MoviesSelectors = {
 export const reducer = createReducer(INITIAL_STATE, {
     [Types.SET_FETCHING]: (state, { treeFetching }) =>
         state.merge({ treeFetching }),
+    [Types.SET_FEATURED_MOVIE]: (state, { featured }) => {
+        console.log(featured)
+        return state.merge({ featured })
+    },
     [Types.SET_MOVIES]: (state, { movies }) => state.merge({ movies }),
     [Types.SWITCH_MODE]: state =>
         state.merge({ viewFavorites: !state.viewFavorites }),

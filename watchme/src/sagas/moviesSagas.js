@@ -12,6 +12,15 @@ export function* getMovies(api) {
 
     yield put(MoviesAction.setFetching(false))
     if (moviesOK) {
+        const featured = {
+            ...data.feed.entry[
+                Math.floor(Math.random() * Math.floor(data.feed.entry.length))
+            ],
+            rating: Math.floor(Math.random() * Math.floor(7)),
+            match: Math.floor(Math.random() * Math.floor(100)),
+        }
+        yield put(MoviesAction.setFeaturedMovie(featured))
+
         yield put(
             MoviesAction.setMovies(
                 data.feed.entry.map(el => ({

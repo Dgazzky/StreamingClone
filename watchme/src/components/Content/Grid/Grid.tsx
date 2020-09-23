@@ -10,20 +10,10 @@ import isEmpty from 'lodash/isEmpty'
 
 const Grid = () => {
     const movies = useSelector(state => MoviesSelectors.getMovies(state))
-
+    const featured = useSelector(state => MoviesSelectors.getFeatured(state))
     return (
         <div className={styles.tableContainer}>
-            {!isEmpty(movies) && (
-                <Featured
-                    movie={
-                        movies[
-                            Math.floor(
-                                Math.random() * Math.floor(movies.length)
-                            )
-                        ]
-                    }
-                />
-            )}
+            {!isEmpty(featured) && <Featured movie={featured} />}
             {Object.keys(MOVIE_CATEGORIES).map((category, index) => (
                 <Row
                     key={index}
