@@ -34,7 +34,7 @@ const Movies = () => {
             <Header
                 onFavoritesView={handleFavoritesView}
                 onSearch={handleSearch}
-            />
+            /> change to test pull request
             {isFetching ? (
                 <Spin />
             ) : (
